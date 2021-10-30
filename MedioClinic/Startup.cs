@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace BlankSiteCore
+namespace MedioClinic
 {
     public class Startup
     {
@@ -53,10 +53,13 @@ namespace BlankSiteCore
                 kenticoServiceCollection.DisableVirtualContextSecurityForLocalhost();
             }
 
-            services.AddAuthentication();
+            // services.AddAuthentication();
             // services.AddAuthorization();
 
+            services.AddAntiforgery();
+
             services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +68,7 @@ namespace BlankSiteCore
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
 
             app.UseStaticFiles();
@@ -75,7 +79,7 @@ namespace BlankSiteCore
 
             app.UseCors();
 
-            app.UseAuthentication();
+           // app.UseAuthentication();
             // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
