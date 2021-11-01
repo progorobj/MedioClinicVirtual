@@ -210,6 +210,7 @@ namespace Business.Repositories
 			var checkedCulture = GetSiteCulture(siteCulture);
 			NavigationItem navigation;
 
+
 			if (!_memoryCache.TryGetValue(checkedCulture.IsoCode, out navigation))
 			{
 				var allItems = (await _basePageRepository.GetPagesByTypeAndCultureAsync(
